@@ -1,13 +1,105 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Main colors from palette */
+    --background: 19 48% 83%; /* Cream #EACDC2 */
+    --foreground: 204 29% 7%; /* Dark #0D1317 */
+
+    --card: 0 0% 100%; /* White for cards */
+    --card-foreground: 204 29% 7%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 204 29% 7%;
+
+    --primary: 343 23% 49%; /* Mauve #985F6F */
+    --primary-foreground: 19 48% 83%;
+
+    --secondary: 158 19% 39%; /* Sage #517664 */
+    --secondary-foreground: 19 48% 83%;
+
+    --muted: 19 48% 90%;
+    --muted-foreground: 204 29% 35%;
+
+    --accent: 21 37% 34%; /* Brown #774936 */
+    --accent-foreground: 19 48% 83%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 19 48% 75%;
+    --input: 19 48% 75%;
+    --ring: 343 23% 49%;
+
+    --radius: 0.75rem;
+
+    /* Health-specific colors */
+    --health-safe: 158 19% 39%; /* Sage green */
+    --health-warning: 21 37% 34%; /* Brown */
+    --health-danger: 343 23% 49%; /* Mauve */
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 204 29% 7%; /* Dark #0D1317 */
+    --foreground: 19 48% 83%;
+
+    --card: 204 29% 10%;
+    --card-foreground: 19 48% 83%;
+
+    --popover: 204 29% 10%;
+    --popover-foreground: 19 48% 83%;
+
+    --primary: 343 23% 49%;
+    --primary-foreground: 19 48% 83%;
+
+    --secondary: 158 19% 39%;
+    --secondary-foreground: 19 48% 83%;
+
+    --muted: 204 29% 15%;
+    --muted-foreground: 19 48% 70%;
+
+    --accent: 21 37% 34%;
+    --accent-foreground: 19 48% 83%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 204 29% 20%;
+    --input: 204 29% 20%;
+    --ring: 343 23% 49%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
 }
