@@ -46,29 +46,25 @@ const History = () => {
     );
   }, []);
 
-  const handleExport = () => {
-    const profile = JSON.parse(localStorage.getItem("healthProfile") || "{}");
-    const exportData = {
-      profile,
-      foodLogs,
-      symptomLogs,
-      exportedAt: new Date().toISOString(),
-    };
+  const handleExport = async () => {
+    try {
+      const res = await fetch("/data.pdf");
+      if (!res.ok) throw new Error(`Failed to fetch PDF: ${res.status}`);
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `patient-eating-habits.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
 
-    const dataStr = JSON.stringify(exportData, null, 2);
-    const dataUri = `data:application/json;charset=utf-8,${encodeURIComponent(dataStr)}`;
-    
-    const exportFileDefaultName = `health-data-${format(new Date(), "yyyy-MM-dd")}.json`;
-    
-    const linkElement = document.createElement("a");
-    linkElement.setAttribute("href", dataUri);
-    linkElement.setAttribute("download", exportFileDefaultName);
-    linkElement.click();
-
-    toast({
-      title: "Data exported",
-      description: "Your health history has been downloaded.",
-    });
+      toast({ title: "Download started", description: "PDF download started." });
+    } catch (err) {
+      console.error(err);
+      toast({ title: "Download failed", description: String(err) });
+    }
   };
 
   return (

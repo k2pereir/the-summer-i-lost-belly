@@ -55,7 +55,7 @@ const LogFood = () => {
         date,
         time,
         photoUrl: photoPreview,
-        analysis: "AI analysis will be implemented with backend",
+        analysis: "Two burgers.",
       };
 
       const existingLogs = JSON.parse(localStorage.getItem("foodLogs") || "[]");
