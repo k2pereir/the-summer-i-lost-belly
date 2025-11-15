@@ -97,7 +97,7 @@ const Profile = () => {
           <CardContent className="space-y-4">
             <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="name">Name (Optional)</Label>
+                <Label htmlFor="name">Name</Label>
                 <Input
                   id="name"
                   value={profile.name}
@@ -147,7 +147,7 @@ const Profile = () => {
                   <SelectValue placeholder="Select diet type" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="omnivore">Omnivore</SelectItem>
+                  <SelectItem value="omnivore">No restrictions</SelectItem>
                   <SelectItem value="vegetarian">Vegetarian</SelectItem>
                   <SelectItem value="vegan">Vegan</SelectItem>
                   <SelectItem value="keto">Keto</SelectItem>

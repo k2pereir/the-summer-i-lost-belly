@@ -8,9 +8,9 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Main colors from palette */
-    --background: 19 48% 83%; /* Cream #EACDC2 */
-    --foreground: 204 29% 7%; /* Dark #0D1317 */
+    /* Main colors from palette (H S% L%) */
+    --background: 195 46% 87%; /* light cream */
+    --foreground: 204 29% 7%; /* dark text */
 
     --card: 0 0% 100%; /* White for cards */
     --card-foreground: 204 29% 7%;
@@ -18,31 +18,34 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 204 29% 7%;
 
-    --primary: 343 23% 49%; /* Mauve #985F6F */
-    --primary-foreground: 19 48% 83%;
+    /* Primary used for icons / highlights */
+    --primary: 204 29% 7%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 158 19% 39%; /* Sage #517664 */
-    --secondary-foreground: 19 48% 83%;
+    --secondary: 204 29% 30%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 19 48% 90%;
-    --muted-foreground: 204 29% 35%;
+    /* Muted is the subtle background (e.g. behind tabs) */
+    --muted: 195 46% 92%;
+    --muted-foreground: 204 29% 20%;
 
-    --accent: 21 37% 34%; /* Brown #774936 */
+    /* Accent used for badges (symptoms) */
+    --accent: 21 37% 34%;
     --accent-foreground: 19 48% 83%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 19 48% 75%;
-    --input: 19 48% 75%;
+    --border: 204 29% 75%;
+    --input: 204 29% 75%;
     --ring: 343 23% 49%;
 
     --radius: 0.75rem;
 
     /* Health-specific colors */
-    --health-safe: 158 19% 39%; /* Sage green */
-    --health-warning: 21 37% 34%; /* Brown */
-    --health-danger: 343 23% 49%; /* Mauve */
+    --health-safe: 158 19% 39%;
+    --health-warning: 21 37% 34%;
+    --health-danger: 343 23% 49%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -55,7 +58,7 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 204 29% 7%; /* Dark #0D1317 */
+    --background: 204 29% 7%;
     --foreground: 19 48% 83%;
 
     --card: 204 29% 10%;
