@@ -1,6 +1,3 @@
-INSTALL THESE:
-pip install react react-dom react-scripts
-
-TO RUN: 
-cd hackathon 
-npm start
+react
+react-dom
+react-scripts
