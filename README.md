@@ -1,2 +1,3 @@
-# the-summer-i-lost-belly
-wie hackathon team 2
+# My Gut Feeling 
+
+My Gut Feeling is a food-tracking and symptom-logging tool designed to help users understand how their diet may be affecting their digestive health. It allows users to record meals and symptoms daily, and then analyzes the data to detect patterns or possible trigger foods. At the end the period recommended by the doctor, the system generates a clear and organized report that can be securely shared with the doctor of the user’s choice. This gives healthcare professionals a reliable, data-driven overview instead of relying on memory, making it easier to reach an accurate diagnosis and plan effective next steps for treatment.
