@@ -1,0 +1,122 @@
+// Prisma schema for SQLite
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               Int               @id @default(autoincrement())
+  name             String?
+  age              Int?
+  weight           Float?
+  gender           String?
+  dietType         String?
+  createdAt        DateTime          @default(now())
+
+  meals            Meal[]
+  symptoms         Symptom[]         
+  allergies        Allergy[]
+  healthConditions HealthCondition[]
+  familyHealth     FamilyHealth[]
+  menstrualCycle   MenstrualCycle?
+}
+
+model Allergy {
+  id       Int    @id @default(autoincrement())
+  userId   Int
+  allergen String
+  severity String?
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model HealthCondition {
+  id            Int     @id @default(autoincrement())
+  userId        Int
+  conditionName String
+  notes         String?
+  user          User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model FamilyHealth {
+  id            Int     @id @default(autoincrement())
+  userId        Int
+  conditionName String
+  notes         String?
+  user          User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model MenstrualCycle {
+  id              Int      @id @default(autoincrement())
+  userId          Int      @unique
+  cycleLengthDays Int?
+  hasCramps       Boolean  @default(false)
+  crampSeverity   String?
+  lastPeriodDate  DateTime?
+  notes           String?
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model BrandedFood {
+  id          Int              @id @default(autoincrement())
+  name        String
+  brand       String?
+  createdAt   DateTime         @default(now())
+
+  ingredients FoodIngredient[]
+  meals       Meal[]
+}
+
+model Meal {
+  id                   Int              @id @default(autoincrement())
+  userId               Int
+  mealType             String?
+  mealTime             DateTime
+  mealName             String?
+  portionSize          String?
+  timeSinceLastMealHrs Float?
+  notes                String?
+  createdAt            DateTime         @default(now())
+  brandedFoodId        Int?
+
+  user                 User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  brandedFood          BrandedFood?     @relation(fields: [brandedFoodId], references: [id])
+  ingredients          MealIngredient[]
+  symptoms             Symptom[]
+}
+
+model FoodIngredient {
+  id            Int                @id @default(autoincrement())
+  name          String
+  brandedFoodId Int?
+  brandedFood   BrandedFood?       @relation(fields: [brandedFoodId], references: [id])
+  meals         MealIngredient[]
+}
+
+model MealIngredient {
+  id               Int             @id @default(autoincrement())
+  mealId           Int
+  foodIngredientId Int?
+  quantity         Float?
+  note             String?
+
+  meal             Meal            @relation(fields: [mealId], references: [id], onDelete: Cascade)
+  foodIngredient   FoodIngredient? @relation(fields: [foodIngredientId], references: [id])
+}
+
+model Symptom {
+  id        Int      @id @default(autoincrement())
+  severity  Int
+  notes     String?
+  createdAt DateTime @default(now())
+  
+  mealId    Int
+  meal      Meal     @relation(fields: [mealId], references: [id], onDelete: Cascade)
+
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
